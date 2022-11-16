@@ -140,4 +140,12 @@ class MovieRepositoryImpl implements MovieRepository {
     final result = await localDataSource.getWatchlistMovies();
     return Right(result.map((data) => data.toEntity()).toList());
   }
+
+  @override
+  Future<bool> isConnected() async {
+    if (await networkInfo.isConnected) {
+      return true;
+    }
+    return false;
+  }
 }
