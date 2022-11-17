@@ -92,6 +92,7 @@ class MyApp extends StatelessWidget {
           textTheme: kTextTheme,
         ),
         home: HomeMoviePage(),
+        debugShowCheckedModeBanner: false,
         navigatorObservers: [routeObserver],
         onGenerateRoute: (RouteSettings settings) {
           switch (settings.name) {
