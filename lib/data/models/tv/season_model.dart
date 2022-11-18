@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:ditonton/domain/entities/tv/season.dart';
 import 'package:equatable/equatable.dart';
 
@@ -21,11 +19,6 @@ class SeasonModel extends Equatable {
   final String? overview;
   final String? posterPath;
   final int? seasonNumber;
-
-  factory SeasonModel.fromRawJson(String str) =>
-      SeasonModel.fromJson(json.decode(str));
-
-  String toRawJson() => json.encode(toJson());
 
   factory SeasonModel.fromJson(Map<String, dynamic> json) => SeasonModel(
         airDate: json["air_date"] == null || json["air_date"] == ""

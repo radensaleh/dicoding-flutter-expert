@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:ditonton/data/models/genre_model.dart';
 import 'package:ditonton/data/models/tv/last_episode_to_air_model.dart';
 import 'package:ditonton/data/models/tv/network_model.dart';
@@ -76,11 +74,6 @@ class TvDetailResponse extends Equatable {
   final String type;
   final double voteAverage;
   final int voteCount;
-
-  factory TvDetailResponse.fromRawJson(String str) =>
-      TvDetailResponse.fromJson(json.decode(str));
-
-  String toRawJson() => json.encode(toJson());
 
   factory TvDetailResponse.fromJson(Map<String, dynamic> json) =>
       TvDetailResponse(

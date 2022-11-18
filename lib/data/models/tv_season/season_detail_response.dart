@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:ditonton/data/models/tv_season/episode_model.dart';
 import 'package:ditonton/domain/entities/tv/season_detail.dart';
 import 'package:equatable/equatable.dart';
@@ -24,11 +22,6 @@ class SeasonDetailResponse extends Equatable {
   final int seasonDetailResponseId;
   final String? posterPath;
   final int seasonNumber;
-
-  factory SeasonDetailResponse.fromRawJson(String str) =>
-      SeasonDetailResponse.fromJson(json.decode(str));
-
-  String toRawJson() => json.encode(toJson());
 
   factory SeasonDetailResponse.fromJson(Map<String, dynamic> json) =>
       SeasonDetailResponse(
@@ -58,7 +51,7 @@ class SeasonDetailResponse extends Equatable {
     return SeasonDetail(
       id: this.id,
       airDate: this.airDate,
-      episodes: this.episodes,
+      episodes: this.episodes.map((eps) => eps.toEntity()).toList(),
       name: this.name,
       overview: this.overview,
       seasonDetailResponseId: this.seasonDetailResponseId,

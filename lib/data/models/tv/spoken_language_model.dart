@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
 
 class SpokenLanguageModel extends Equatable {
@@ -12,11 +10,6 @@ class SpokenLanguageModel extends Equatable {
   final String? englishName;
   final String? iso6391;
   final String? name;
-
-  factory SpokenLanguageModel.fromRawJson(String str) =>
-      SpokenLanguageModel.fromJson(json.decode(str));
-
-  String toRawJson() => json.encode(toJson());
 
   factory SpokenLanguageModel.fromJson(Map<String, dynamic> json) =>
       SpokenLanguageModel(

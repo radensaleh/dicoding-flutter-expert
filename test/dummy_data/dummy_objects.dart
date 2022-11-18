@@ -1,9 +1,9 @@
 import 'package:ditonton/data/models/movie_table.dart';
 import 'package:ditonton/data/models/tv/tv_table.dart';
-import 'package:ditonton/data/models/tv_season/episode_model.dart';
 import 'package:ditonton/domain/entities/genre.dart';
 import 'package:ditonton/domain/entities/movie.dart';
 import 'package:ditonton/domain/entities/movie_detail.dart';
+import 'package:ditonton/domain/entities/tv/episode.dart';
 import 'package:ditonton/domain/entities/tv/season.dart';
 import 'package:ditonton/domain/entities/tv/season_detail.dart';
 import 'package:ditonton/domain/entities/tv/tv.dart';
@@ -107,7 +107,7 @@ final testTVSeasonDetail = SeasonDetail(
   id: '1',
   airDate: '2019-04-22',
   episodes: [
-    EpisodeModel(
+    Episode(
       airDate: '2019-04-22',
       episodeNumber: 1,
       id: 1,
@@ -178,7 +178,7 @@ final testSeasonDetail = SeasonDetail(
   id: "1",
   airDate: "airDate",
   episodes: [
-    EpisodeModel(
+    Episode(
       airDate: "airDate",
       episodeNumber: 2,
       id: 1,

@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
 
 class NetworkModel extends Equatable {
@@ -14,11 +12,6 @@ class NetworkModel extends Equatable {
   final String? name;
   final String? logoPath;
   final String? originCountry;
-
-  factory NetworkModel.fromRawJson(String str) =>
-      NetworkModel.fromJson(json.decode(str));
-
-  String toRawJson() => json.encode(toJson());
 
   factory NetworkModel.fromJson(Map<String, dynamic> json) => NetworkModel(
         id: json["id"],

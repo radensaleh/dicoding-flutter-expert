@@ -1,5 +1,4 @@
-import 'dart:convert';
-
+import 'package:ditonton/domain/entities/tv/episode.dart';
 import 'package:equatable/equatable.dart';
 
 class EpisodeModel extends Equatable {
@@ -35,11 +34,6 @@ class EpisodeModel extends Equatable {
   final List<dynamic> crew;
   final List<dynamic> guestStars;
 
-  factory EpisodeModel.fromRawJson(String str) =>
-      EpisodeModel.fromJson(json.decode(str));
-
-  String toRawJson() => json.encode(toJson());
-
   factory EpisodeModel.fromJson(Map<String, dynamic> json) => EpisodeModel(
         airDate: json["air_date"],
         episodeNumber: json["episode_number"],
@@ -73,6 +67,25 @@ class EpisodeModel extends Equatable {
         "crew": List<dynamic>.from(crew.map((x) => x)),
         "guest_stars": List<dynamic>.from(guestStars.map((x) => x)),
       };
+
+  Episode toEntity() {
+    return Episode(
+      airDate: this.airDate,
+      episodeNumber: this.episodeNumber,
+      id: this.id,
+      name: this.name,
+      overview: this.overview,
+      productionCode: this.productionCode,
+      runtime: this.runtime,
+      seasonNumber: this.seasonNumber,
+      showId: this.showId,
+      stillPath: this.stillPath,
+      voteAverage: this.voteAverage,
+      voteCount: this.voteCount,
+      crew: this.crew,
+      guestStars: this.guestStars,
+    );
+  }
 
   @override
   List<Object?> get props => [

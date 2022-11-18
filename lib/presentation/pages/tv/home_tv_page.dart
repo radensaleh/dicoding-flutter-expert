@@ -4,6 +4,7 @@ import 'package:ditonton/common/state_enum.dart';
 import 'package:ditonton/domain/entities/tv/tv.dart';
 import 'package:ditonton/presentation/pages/about_page.dart';
 import 'package:ditonton/presentation/pages/home_movie_page.dart';
+import 'package:ditonton/presentation/pages/tv/on_the_air_tv_page.dart';
 import 'package:ditonton/presentation/pages/tv/popular_tv_page.dart';
 import 'package:ditonton/presentation/pages/tv/search_tv_page.dart';
 import 'package:ditonton/presentation/pages/tv/top_rated_tv_page.dart';
@@ -96,9 +97,10 @@ class _HomeTVPageState extends State<HomeTVPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'TV Shows',
-                style: kHeading6,
+              _buildSubHeading(
+                title: 'TV Shows',
+                onTap: () =>
+                    Navigator.pushNamed(context, OnTheAirTVPage.ROUTE_NAME),
               ),
               Consumer<TVListNotifier>(
                 builder: (context, data, child) {

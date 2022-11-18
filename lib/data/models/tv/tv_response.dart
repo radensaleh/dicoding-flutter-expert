@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:ditonton/data/models/tv/tv_model.dart';
 import 'package:equatable/equatable.dart';
 
@@ -15,11 +13,6 @@ class TVResponse extends Equatable {
   final List<TVModel> results;
   final int totalPages;
   final int totalResults;
-
-  factory TVResponse.fromRawJson(String str) =>
-      TVResponse.fromJson(json.decode(str));
-
-  String toRawJson() => json.encode(toJson());
 
   factory TVResponse.fromJson(Map<String, dynamic> json) => TVResponse(
         page: json["page"],

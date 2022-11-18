@@ -1,4 +1,4 @@
-import 'package:ditonton/data/models/tv_season/episode_model.dart';
+import 'package:ditonton/domain/entities/tv/episode.dart';
 import 'package:equatable/equatable.dart';
 
 class SeasonDetail extends Equatable {
@@ -15,7 +15,7 @@ class SeasonDetail extends Equatable {
 
   final String id;
   final dynamic airDate;
-  final List<EpisodeModel> episodes;
+  final List<Episode> episodes;
   final String name;
   final String overview;
   final int seasonDetailResponseId;

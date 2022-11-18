@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
 
 class LastEpisodeToAirModel extends Equatable {
@@ -30,11 +28,6 @@ class LastEpisodeToAirModel extends Equatable {
   final String? stillPath;
   final double? voteAverage;
   final int? voteCount;
-
-  factory LastEpisodeToAirModel.fromRawJson(String str) =>
-      LastEpisodeToAirModel.fromJson(json.decode(str));
-
-  String toRawJson() => json.encode(toJson());
 
   factory LastEpisodeToAirModel.fromJson(Map<String, dynamic> json) =>
       LastEpisodeToAirModel(

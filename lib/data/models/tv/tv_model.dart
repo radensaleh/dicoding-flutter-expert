@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:ditonton/domain/entities/tv/tv.dart';
 import 'package:equatable/equatable.dart';
 
@@ -33,10 +31,6 @@ class TVModel extends Equatable {
   final String? posterPath;
   final double voteAverage;
   final int voteCount;
-
-  factory TVModel.fromRawJson(String str) => TVModel.fromJson(json.decode(str));
-
-  String toRawJson() => json.encode(toJson());
 
   factory TVModel.fromJson(Map<String, dynamic> json) => TVModel(
         backdropPath:
