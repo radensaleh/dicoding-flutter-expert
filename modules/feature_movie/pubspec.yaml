@@ -14,10 +14,10 @@ dependencies:
   
   http: ^0.13.3
   provider: ^6.0.3
-  dartz: ^0.10.0-nullsafety.2
+  dartz: ^0.10.1
   equatable: ^2.0.3
   flutter_rating_bar: ^4.0.0
-  cached_network_image: ^3.0.0
+  cached_network_image: ^3.2.0
   flutter_bloc: ^8.0.1
   rxdart: ^0.27.3
   firebase_crashlytics: ^3.0.6
