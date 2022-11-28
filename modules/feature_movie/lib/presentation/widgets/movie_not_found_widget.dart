@@ -15,16 +15,24 @@ class MovieNotFoundWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset('assets/search_not_found.png'),
-          const SizedBox(height: 15),
-          Text(
-            message,
-            style: kHeading6.copyWith(
-              color: Colors.white,
-              fontSize: 16,
+          Expanded(
+            flex: 0,
+            child: Image.asset(
+              'assets/search_not_found.png',
+              fit: BoxFit.fill,
             ),
           ),
-          const SizedBox(height: 50),
+          const SizedBox(height: 12),
+          Expanded(
+            flex: 0,
+            child: Text(
+              message,
+              style: kHeading6.copyWith(
+                color: Colors.white,
+                fontSize: 16,
+              ),
+            ),
+          ),
         ],
       ),
     );

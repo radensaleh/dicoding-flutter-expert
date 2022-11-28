@@ -10,69 +10,72 @@ class SearchTVPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Search TV Shows'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            TextField(
-              onChanged: (query) => context
-                  .read<SearchTvBloc>()
-                  .add(OnQueryTvChange(query: query)),
-              decoration: const InputDecoration(
-                hintText: 'Search title',
-                prefixIcon: Icon(Icons.search),
-                border: OutlineInputBorder(),
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Search TV Shows'),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TextField(
+                onChanged: (query) => context
+                    .read<SearchTvBloc>()
+                    .add(OnQueryTvChange(query: query)),
+                decoration: const InputDecoration(
+                  hintText: 'Search title',
+                  prefixIcon: Icon(Icons.search),
+                  border: OutlineInputBorder(),
+                ),
+                textInputAction: TextInputAction.search,
               ),
-              textInputAction: TextInputAction.search,
-            ),
-            const SizedBox(height: 16),
-            Text(
-              'Search Result',
-              style: kHeading6,
-            ),
-            BlocBuilder<SearchTvBloc, SearchTvState>(
-              builder: (context, state) {
-                if (state is SearchTvLoadingState) {
-                  return const Center(child: CircularProgressIndicator());
-                } else if (state is SearchTvHasDataState) {
-                  final result = state.result;
+              const SizedBox(height: 16),
+              Text(
+                'Search Result',
+                style: kHeading6,
+              ),
+              BlocBuilder<SearchTvBloc, SearchTvState>(
+                builder: (context, state) {
+                  if (state is SearchTvLoadingState) {
+                    return const Center(child: CircularProgressIndicator());
+                  } else if (state is SearchTvHasDataState) {
+                    final result = state.result;
 
-                  if (result.isEmpty) {
+                    if (result.isEmpty) {
+                      return const Expanded(
+                        child: TVNotFoundWidget(message: 'TV Show not found'),
+                      );
+                    }
+                    return Expanded(
+                      child: ListView.builder(
+                        padding: const EdgeInsets.all(8.0),
+                        itemBuilder: (context, index) {
+                          final tv = result[index];
+                          return TVCard(tv);
+                        },
+                        itemCount: result.length,
+                      ),
+                    );
+                  } else if (state is SearchTvErrorState) {
+                    return Center(
+                        child: Text(
+                      key: const Key('error_message'),
+                      state.message,
+                    ));
+                  } else if (state is SearchTvInitialState) {
                     return const Expanded(
                       child: TVNotFoundWidget(message: 'TV Show not found'),
                     );
+                  } else {
+                    return const Center(child: Text('Error BLoC'));
                   }
-                  return Expanded(
-                    child: ListView.builder(
-                      padding: const EdgeInsets.all(8.0),
-                      itemBuilder: (context, index) {
-                        final tv = result[index];
-                        return TVCard(tv);
-                      },
-                      itemCount: result.length,
-                    ),
-                  );
-                } else if (state is SearchTvErrorState) {
-                  return Center(
-                      child: Text(
-                    key: const Key('error_message'),
-                    state.message,
-                  ));
-                } else if (state is SearchTvInitialState) {
-                  return const Expanded(
-                    child: TVNotFoundWidget(message: 'TV Show not found'),
-                  );
-                } else {
-                  return const Center(child: Text('Error BLoC'));
-                }
-              },
-            ),
-          ],
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
